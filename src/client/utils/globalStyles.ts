@@ -45,13 +45,4 @@ export default makeStyles({
 
     backgroundColor: "#EFEFF0",
   },
-  window: {
-    backgroundColor: "#fff",
-    boxShadow: "0px 0px 15px rgba(0, 0, 0, 0.35)",
-  },
-  window_title: {
-    padding: 15,
-    backgroundColor: colors.secondary,
-    color: "#fff",
-  },
 });
