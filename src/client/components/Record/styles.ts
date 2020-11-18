@@ -10,4 +10,9 @@ export default makeStyles({
     padding: 15,
     width: 200,
   },
+  weekday: {
+    display: "block",
+    fontSize: 12,
+    color: "rgba(28,32,37,0.4)",
+  },
 });

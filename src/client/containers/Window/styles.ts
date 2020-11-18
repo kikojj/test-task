@@ -58,11 +58,22 @@ export default makeStyles({
   },
   window_row: {
     display: "flex",
+    alignItems: "center",
 
     backgroundColor: "#fff",
 
+    cursor: "pointer",
+
+    "&:hover": {
+      backgroundColor: "#dbdbdb",
+    },
+
     "&:nth-child(2n)": {
       backgroundColor: "#EFEFF0",
+
+      "&:hover": {
+        backgroundColor: "#dbdbdb",
+      },
     },
   },
   window_action: {

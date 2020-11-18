@@ -1,18 +1,13 @@
 {
   "walking": [
     {
-      "id": 1,
-      "date": 1605351159844,
-      "distance": 12500
-    },
-    {
       "id": 2,
       "date": 1605437559844,
-      "distance": 7500
+      "distance": 7501
     },
     {
       "date": 1605523959844,
-      "distance": 22000,
+      "distance": 22045,
       "id": 3
     },
     {

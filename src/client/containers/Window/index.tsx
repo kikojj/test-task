@@ -1,17 +1,20 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Record } from "@client/components";
-import { TState } from "@client/redux/utils";
+import { TState } from "@client/redux/store";
 
 import { CreateRecord } from "../CreateRecord";
 import IconSort from "./svgs/IconSort.svg";
 import useStyles from "./styles";
+import { EditRecord } from "../EditRecord";
+import { TRecord } from "@ts/record";
 
 export const Window: React.FC = () => {
   const classes = useStyles();
   let records = useSelector((state: TState) => state.records);
 
-  const [showCreateWindow, setShowCreateWindow] = React.useState<boolean>(false);
+  const [createWindow, setCreateWindow] = React.useState<{ show: boolean }>({ show: false });
+  const [editWindow, setEditWindow] = React.useState<{ show: boolean; record?: TRecord }>({ show: false });
   const [sort, setSort] = React.useState<"none" | "date_htl" | "date_lth" | "dist_htl" | "dist_lth">("date_htl");
 
   if (sort === "date_htl") {
@@ -55,14 +58,15 @@ export const Window: React.FC = () => {
         </div>
         <div className={classes.window_content}>
           {records.map((record) => (
-            <Record key={record.id} className={classes.window_row} date={record.date} distance={record.distance} />
+            <Record key={record.id} className={classes.window_row} date={record.date} distance={record.distance} onClick={() => setEditWindow({ record, show: true })} />
           ))}
         </div>
-        <div className={classes.window_action} onClick={() => setShowCreateWindow(true)}>
+        <div className={classes.window_action} onClick={() => setCreateWindow({ show: true })}>
           Добавить запись
         </div>
       </div>
-      {showCreateWindow ? <CreateRecord onClose={() => setShowCreateWindow(false)} /> : ""}
+      {createWindow.show ? <CreateRecord onClose={() => setCreateWindow({ show: false })} /> : ""}
+      {editWindow.show && editWindow.record ? <EditRecord record={editWindow.record} onClose={() => setEditWindow({ show: false })} /> : ""}
     </React.Fragment>
   );
 };
